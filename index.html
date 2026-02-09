@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Merger</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Scripts for PDF functionality -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+</head>
+
+<body>
+    <div class="app-container">
+        <div class="side-panel left-panel"></div>
+
+        <main class="main-content">
+            <header class="app-header">
+                <h1 class="app-title">PDF Merger</h1>
+                <p class="app-subtitle">Combine PDF in the Order you want!</p>
+            </header>
+
+            <div class="content-container">
+                <div id="drop-zone" class="drop-zone">
+                    <div class="drop-content">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="upload-icon">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <p class="drop-text">Drag PDFs here or click to browse</p>
+                        <input type="file" id="file-input" accept=".pdf" multiple hidden>
+                        <button id="browse-btn" class="btn btn-secondary">Browse Files</button>
+                        <p class="help-text">Only PDF files accepted</p>
+                    </div>
+                </div>
+
+                <div class="file-status-bar">
+                    <span id="file-count">0 PDFs selected</span>
+                    <span id="total-size">Total size: 0 MB</span>
+                </div>
+
+                <div id="file-list" class="file-list">
+                    
+                </div>
+
+                <div class="action-buttons">
+                    <button id="clear-btn" class="btn btn-secondary hidden">Clear All</button>
+                    <button id="merge-btn" class="btn btn-secondary" disabled>Merge PDFs</button>
+                </div>
+
+                <div id="success-message" class="success-message hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <span>PDFs merged successfully!</span>
+                </div>
+            </div>
+        </main>
+
+        <div class="side-panel right-panel"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
